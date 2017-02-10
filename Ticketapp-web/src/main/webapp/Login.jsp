@@ -11,7 +11,7 @@
 <h3>Login</h3><br><br>
 
 <FORM action="/home/Login" method="get" >
-Email Id:&nbsp&nbsp&nbsp&nbsp<INPUT TYPE="text" placeholder="emailid" NAME="Emailid" required autofocus /><br><br><br>
+Email Id:&nbsp&nbsp&nbsp&nbsp<INPUT TYPE="text" placeholder="emailid" NAME="emailId" required autofocus /><br><br><br>
 Password:&nbsp&nbsp&nbsp&nbsp<input type="password" placeholder="password" name="password"required /><br><br><br>
 ${ERROR}
 <br><br><input type="submit" name="Sign up" value="Login">

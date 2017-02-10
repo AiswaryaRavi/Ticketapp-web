@@ -9,7 +9,7 @@
 <body>
 <center>
 <p>You have Closed Your Ticket Successfully!<br><br>
-<a href="UserOptions.jsp" target="_self">back</a href></p></center>
+<a href="../UserOptions.jsp" target="_self">back</a href></p></center>
 
 </body>
 </html>

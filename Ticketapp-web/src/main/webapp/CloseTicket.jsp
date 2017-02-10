@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Ticket Management</title>
 </head>
 <body>
 <center>
@@ -12,15 +12,13 @@
 		<br> <br>
 
 		<FORM action="/home/CloseTicket" method="get">
-			Email Id:&nbsp&nbsp&nbsp&nbsp<INPUT TYPE="text" placeholder="emailid"
-				NAME="Emailid" required autofocus /><br>
-			<br>
-			<br> Password:&nbsp&nbsp&nbsp&nbsp<input type="password"
-				placeholder="password" name="password" required /><br>
-			<br>
-			<br> Ticket Id:&nbsp&nbsp&nbsp<input type="text"
-				placeholder="Id" name="Tid" required autofocus /><br> <br>
-			<br> <input type="submit" name="Closeticket" value="Close Ticket">
+		<input type="hidden" name="emailId" value="${emailId}">
+			 Ticket Id:<input type="text"
+				placeholder="Id" name="tid" required autofocus /><br> <br>
+			<br> 
+				${ERROR}
+				<br><br>
+				<input type="submit" name="Closeticket" value="Close Ticket">
 				</FORM>
 				</center>
 

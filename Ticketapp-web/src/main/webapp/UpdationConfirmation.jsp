@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Ticket Management</title>
 </head>
 <body><center>
 <p>You have Updated Successfully!<br><br>
-<a href="UserOptions.jsp" target="_self">back</a href></p></center>
+<a href="../UserOptions.jsp" target="_self">back</a href></p></center>
 </body>
 </html>

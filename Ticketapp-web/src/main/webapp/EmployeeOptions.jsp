@@ -10,14 +10,28 @@
 <center>
 <h3>Choose your Option</h3><br><br>
 
-<FORM action="/" method="post">
-<input type="button" name="Reply solutions" value="Reply Solution"onclick="window.location.href='Reply Solution.jsp'"><br><br><br>
-<input type="button" name="update Solution" value="Update Solution"onclick="window.location.href='Update Solution.jsp'"><br><br><br>
-<input type="button" name="view ticket" value="View Ticket"onclick="window.location.href='ViewTicket.jsp'"><br><br><br>
-<input type="button" name="Reassign Employee" value="Reassign Employee"onclick="window.location.href='Reassign Employee.jsp'">
 
-</FORM>
-</center>
+		<FORM action="../employee/Assign" method="Get">
+			<input type="hidden" name="emailId" value="${emailId}"> <input
+				type="submit" name="Assign Employee" value="Assign Employee">
+		</form>
+		<br> <br> <br>
+		<form action="../employee/Reply" method="Get">
+			 <input type="hidden" name="emailId" value="${emailId}"><input
+				type="submit" name="update employee" value="Reply">
+		</form>
+		<br> <br> <br>
+		<form action="../employee/ViewTicket" method="Get">
+			<input type="hidden" name="emailId" value="${emailId}"> <input
+				type="button" name="view ticket" value="View Ticket">
+		</form>
+		<br> <br> <br>
+		<form action="../employee/Updation" method="Get">
+			<input type="hidden" name="emailId" value="${emailId}"> <input
+				type="submit" name="Update solution" value="Update Solution">
+
+		</form>
+	</center>
 
 
 </body>

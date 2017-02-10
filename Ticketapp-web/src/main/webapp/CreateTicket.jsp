@@ -25,17 +25,13 @@
 		<h3>Create your Ticket</h3>
 		<br> <br>
 
-		<FORM action="/home/CreateTicket" method="get">
-			Email Id:&nbsp&nbsp&nbsp&nbsp<INPUT TYPE="text" placeholder="emailid"
-				NAME="Emailid" required autofocus /><br> <br> <br>
-			Password:&nbsp&nbsp&nbsp&nbsp<input type="password"
-				placeholder="password" name="password" required /><br> <br>
+		<FORM action="../home/CreateTicket" method="get">
 			Subject:<input type="text"
 				placeholder="Subject" name="Subject" required autofocus /><br>
 			<br> <br> Description:<INPUT TYPE="text"
-				placeholder="Description" NAME="Description" required /><br> <br>
+				placeholder="Description" name="Description" required /><br> <br>
 			<br> Department:
-		<select>
+		<select name="department">
         <%  while(resultset.next()){ %>
             <option><%= resultset.getString(1)%></option>
         <% } %>

@@ -10,10 +10,10 @@
 <center>
 <h3>Login</h3><br><br>
 
-<FORM action="/employee/Login" method="post">
-Email Id:&nbsp&nbsp&nbsp&nbsp<INPUT TYPE="text" placeholder="email id "NAME="Emailid" required autofocus /><br><br><br>
+<FORM action="/employee/Login" method="GET">
+Email Id:&nbsp&nbsp&nbsp&nbsp<INPUT TYPE="text" placeholder="email id "NAME="emailId" required autofocus /><br><br><br>
 Password:&nbsp&nbsp&nbsp&nbsp<input type="password" placeholder="password" name="password" required /><br><br><br>
-<input type="submit" name="Sign up" value="Login">
+<input type="submit" name="Login" value="Login">
 </FORM>
 </center>
 

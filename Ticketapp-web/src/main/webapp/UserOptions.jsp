@@ -11,30 +11,24 @@
 		<h3>Choose your Option</h3>
 		<br> <br>
 
-		<FORM action="/" method="Get">
-			<input type="button" name="emailId" value={$emailId}> <input
-				type="button" name="create ticket" value="Create Ticket"
-				onclick="window.location.href='CreateTicket.jsp'">
+		<FORM action="../home/Creation" method="Get">
+		 <input type="submit" name="create ticket" value="Create Ticket">
 		</form>
 		<br> <br> <br>
-		<form action="/" method="Get">
-			<input type="button" name="emailId" value={$emailId}> <input
-				type="button" name="update ticket" value="Update Ticket"
-				onclick="window.location.href='UpdateTicket.jsp'">
+		<form action="../home/Updation" method="Get">
+	<input type="submit" name="update ticket" value="Update Ticket">
 		</form>
 		<br> <br> <br>
-		<form action="/" method="Get">
-			<input type="button" name="emailId" value={$emailId}> <input
-				type="button" name="view ticket" value="View Ticket"
-				onclick="window.location.href='ViewTicket.jsp'">
+		<form action="/ViewTicket" method="Get">
+			<input type="hidden" name="emailId" value="${emailId}"> <input
+				type="button" name="view ticket" value="View Ticket">
 		</form>
 		<br> <br> <br>
-		<form action="/" method="Get">
-			<input type="button" name="emailId" value={$emailId}> <input
-				type="button" name="close ticket" value="Close Ticket"
-				onclick="window.location.href='CloseTicket.jsp'">
+		<form action="../home/Close" method="Get">
+			<input type="hidden" name="emailId" value="${emailId}"> <input
+				type="submit" name="close ticket" value="Close Ticket">
 
-		</FORM>
+		</form>
 	</center>
 
 </body>
