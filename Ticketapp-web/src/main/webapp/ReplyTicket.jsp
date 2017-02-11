@@ -12,7 +12,6 @@
 		<br> <br>
 
 		<FORM action="/employee/ReplyTicket" method="get">
-		<input type="hidden" name="emailId" value="${emailId}">
 			 Ticket Id:<input type="text"
 				placeholder="Id" name="tid" required autofocus /><br> <br>
 			<br> 

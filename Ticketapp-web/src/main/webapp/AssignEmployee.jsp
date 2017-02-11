@@ -11,8 +11,7 @@
 		<h3>Assign Employee</h3>
 		<br> <br>
 
-		<FORM action="/home/AssignEmployee" method="get">
-		<input type="hidden" name="emailId" value="${emailId}">
+		<form action="/employee/AssignEmployee" method="get">
 			 Ticket Id:<input type="text"
 				placeholder="Id" name="tid" required autofocus /><br> <br>
 			<br> 
@@ -22,7 +21,7 @@
 				${ERROR}
 				<br><br>
 				<input type="submit" name="AssignEmployee" value="Submit">
-				</FORM>
+				</form>
 				</center>
 
 </body>

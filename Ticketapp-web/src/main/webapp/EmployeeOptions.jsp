@@ -11,25 +11,18 @@
 <h3>Choose your Option</h3><br><br>
 
 
-		<FORM action="../employee/Assign" method="Get">
-			<input type="hidden" name="emailId" value="${emailId}"> <input
-				type="submit" name="Assign Employee" value="Assign Employee">
+		<form action="../employee/Assign" method="Get">
+		<input type="submit" name="Assign Employee" value="Assign Employee">
 		</form>
 		<br> <br> <br>
 		<form action="../employee/Reply" method="Get">
-			 <input type="hidden" name="emailId" value="${emailId}"><input
-				type="submit" name="update employee" value="Reply">
+			<input type="submit" name="update employee" value="Reply">
 		</form>
 		<br> <br> <br>
 		<form action="../employee/ViewTicket" method="Get">
 			<input type="hidden" name="emailId" value="${emailId}"> <input
 				type="button" name="view ticket" value="View Ticket">
-		</form>
-		<br> <br> <br>
-		<form action="../employee/Updation" method="Get">
-			<input type="hidden" name="emailId" value="${emailId}"> <input
-				type="submit" name="Update solution" value="Update Solution">
-
+		
 		</form>
 	</center>
 

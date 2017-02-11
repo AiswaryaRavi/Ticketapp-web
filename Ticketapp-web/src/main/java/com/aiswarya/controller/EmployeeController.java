@@ -3,6 +3,8 @@ package com.aiswarya.controller;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,50 +17,59 @@ import com.aiswarya.model.User;
 import com.aiswarya.service.EmployeeLoginService;
 import com.aiswarya.service.EmployeeService;
 import com.aiswarya.service.UserService;
+
 @Controller
 @RequestMapping("/employee")
 
 public class EmployeeController {
 	private static final Logger LOGGER = Logger.getLogger(UserController.class.getName());
+	Employee employee = new Employee();
 
 	@GetMapping("/Login")
-	public String logIn(@RequestParam("emailId") String emailId, @RequestParam("password") String password,ModelMap modelmap) {
+	public String logIn(@RequestParam("emailId") String emailId, @RequestParam("password") String password,
+			ModelMap modelmap, HttpSession session) {
 
 		LOGGER.setLevel(Level.INFO);
 		LOGGER.info("Logging In...");
-		Employee employee=new Employee();
-		EmployeeLoginService employeeservice=new EmployeeLoginService();
-	
+		EmployeeLoginService employeeservice = new EmployeeLoginService();
+		employee.setEmailId(emailId);
+		employee.setPassword(password);
+		session.setAttribute("Logged_in_user", employee);
 
 		try {
 
-			employeeservice.login(emailId, password);
+			if (employeeservice.login(emailId, password))
+				
+			session.setAttribute("Logged_in_user", employee);
+
 			return "../EmployeeOptions.jsp";
 
 		} catch (ServiceException e) {
 
 			modelmap.addAttribute("ERROR", e.getMessage());
 
-
 			return "../EmployeeLogin.jsp";
 
 		}
 	}
-	@GetMapping("/Assign")
-	public String TicketCreation(@RequestParam("emailId") String emailId,ModelMap modelmap){
-		modelmap.addAttribute("emailId", emailId);
-		return "../AssignEmployee.jsp";
-	}
-	@GetMapping("/AssignEmployee")
-	public String assignEmployee(@RequestParam("emailId") String emailId,@RequestParam("tid") int ticketId, @RequestParam("eid") int employeeId,ModelMap map)
-			throws ServiceException {
 
-		EmployeeService emp=new EmployeeService();
-	
+	@GetMapping("/Assign")
+	public String TicketAssignment() {
+		return "../AssignEmployee.jsp";
+
+	}
+
+	@GetMapping("/AssignEmployee")
+	public String assignEmployee(@RequestParam("tid") int ticketId, @RequestParam("eid") int employeeId, ModelMap map,
+			HttpSession session) throws ServiceException {
+
+		EmployeeService emp = new EmployeeService();
 
 		try {
-			emp.reassignEmployee(emailId,employeeId, ticketId);
-			System.out.println("hi");
+			employee = (Employee) session.getAttribute("Logged_in_user");
+
+			emp.reassignEmployee(employee.getEmailId(), employeeId, ticketId);
+			
 			return "../EmployeeAssignmentConfirmation.jsp";
 
 		} catch (ServiceException e) {
@@ -67,22 +78,24 @@ public class EmployeeController {
 
 		}
 
-}
+	}
+
 	@GetMapping("/Reply")
-	public String ReplySolution(@RequestParam("emailId") String emailId,ModelMap modelmap){
-		modelmap.addAttribute("emailId", emailId);
+	public String ReplySolution(){
 		return "../ReplyTicket.jsp";
 	}
-	@GetMapping("/ReplyTicket")
-	public String ReplyTicket(@RequestParam("emailId") String emailId,@RequestParam("tid") int ticketId, @RequestParam("solution") String solution,ModelMap map)
-			throws ServiceException {
 
-		EmployeeService emp=new EmployeeService();
-	
+	@GetMapping("/ReplyTicket")
+	public String ReplyTicket(@RequestParam("tid") int ticketId,
+			@RequestParam("solution") String solution, ModelMap map,HttpSession session) throws ServiceException {
+
+		EmployeeService emp = new EmployeeService();
 
 		try {
-			emp.replyTic(emailId,solution, ticketId);
-			return "../ReplyConfirmation.jsp";
+			employee = (Employee) session.getAttribute("Logged_in_user");
+
+			emp.replyTic(employee.getEmailId(), solution, ticketId);
+			return "../ReplyTicket.jsp";
 
 		} catch (ServiceException e) {
 			map.addAttribute("ERROR", e.getMessage());
@@ -90,29 +103,7 @@ public class EmployeeController {
 
 		}
 	}
-		@GetMapping("/Update")
-		public String UpdateSolution(@RequestParam("emailId") String emailId,ModelMap modelmap){
-			modelmap.addAttribute("emailId", emailId);
-			return "../ReplyTicket.jsp";
-		}
-		@GetMapping("/UpdateSolution")
-		public String UpdateTicket(@RequestParam("emailId") String emailId,@RequestParam("tid") int ticketId, @RequestParam("solution") String solution,ModelMap map)
-				throws ServiceException {
 
-			EmployeeService emp=new EmployeeService();
-		
-
-			try {
-				emp.replyTic(emailId,solution, ticketId);
-				return "../UpdateSolutionConfirmation.jsp";
-
-			} catch (ServiceException e) {
-				map.addAttribute("ERROR", e.getMessage());
-				return "../UpdateSolution.jsp";
-
-			}
-
-}
-
+	
 
 }
