@@ -19,14 +19,12 @@
 	<input type="submit" name="update ticket" value="Update Ticket">
 		</form>
 		<br> <br> <br>
-		<form action="/ViewTicket" method="Get">
-			<input type="hidden" name="emailId" value="${emailId}"> <input
-				type="button" name="view ticket" value="View Ticket">
+		<form action="../home/viewTickets" method="GET">
+	<input type="submit" name="view ticket" value="View Ticket">
 		</form>
 		<br> <br> <br>
 		<form action="../home/Close" method="Get">
-			<input type="hidden" name="emailId" value="${emailId}"> <input
-				type="submit" name="close ticket" value="Close Ticket">
+	 <input type="submit" name="close ticket" value="Close Ticket">
 
 		</form>
 	</center>

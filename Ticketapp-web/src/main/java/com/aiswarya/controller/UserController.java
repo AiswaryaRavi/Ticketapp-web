@@ -1,5 +1,6 @@
 package com.aiswarya.controller;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.aiswarya.exception.PersistanceException;
 import com.aiswarya.exception.ServiceException;
 import com.aiswarya.model.Departments;
 import com.aiswarya.model.TicketTransaction;
@@ -24,6 +26,7 @@ import com.aiswarya.service.UserService;
 
 public class UserController {
 	User user = new User();
+	TicketService ticketservice=new TicketService();
 
 	private static final Logger LOGGER = Logger.getLogger(UserController.class.getName());
 
@@ -166,4 +169,22 @@ public class UserController {
 		}
 
 	}
+	@GetMapping("/viewTickets")
+	public String userViewTickets(ModelMap modelmap,HttpSession session) throws ServiceException {
+		try{
+		user=(User) session.getAttribute("Logged_in_user");
+		List<TicketTransaction> ticketList = ticketservice.DisplayUserTickets(user.getEmailId());
+		
+	
+		modelmap.addAttribute("TICKET_LIST", ticketList);
+		return "../UserViewTicket.jsp";
+		}
+		catch (ServiceException e) {
+
+			modelmap.addAttribute("ERROR", e.getMessage());
+
+			return "../UserOptions.jsp";
+
+		}
+}
 }

@@ -19,9 +19,8 @@
 			<input type="submit" name="update employee" value="Reply">
 		</form>
 		<br> <br> <br>
-		<form action="../employee/ViewTicket" method="Get">
-			<input type="hidden" name="emailId" value="${emailId}"> <input
-				type="button" name="view ticket" value="View Ticket">
+		<form action="../employee/displayTickets" method="Get">
+			<input type="submit" name="view ticket" value="View Ticket">
 		
 		</form>
 	</center>

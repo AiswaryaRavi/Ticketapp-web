@@ -1,5 +1,6 @@
 package com.aiswarya.controller;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.aiswarya.exception.ServiceException;
 import com.aiswarya.model.Employee;
+import com.aiswarya.model.TicketTransaction;
 import com.aiswarya.model.User;
 import com.aiswarya.service.EmployeeLoginService;
 import com.aiswarya.service.EmployeeService;
@@ -24,6 +26,7 @@ import com.aiswarya.service.UserService;
 public class EmployeeController {
 	private static final Logger LOGGER = Logger.getLogger(UserController.class.getName());
 	Employee employee = new Employee();
+	EmployeeService employeeservice=new EmployeeService();
 
 	@GetMapping("/Login")
 	public String logIn(@RequestParam("emailId") String emailId, @RequestParam("password") String password,
@@ -103,6 +106,22 @@ public class EmployeeController {
 
 		}
 	}
+	@GetMapping("/displayTickets")
+	public String userViewTickets(ModelMap modelmap,HttpSession session) throws ServiceException {
+		try{
+		employee=(Employee) session.getAttribute("Logged_in_user");
+		List<TicketTransaction> ticketList = employeeservice.DisplayEmployeeTickets(employee.getEmailId());
+		modelmap.addAttribute("TICKET_LIST", ticketList);
+		return "../EmployeeViewTicket.jsp";
+		}
+		catch (ServiceException e) {
+
+			modelmap.addAttribute("ERROR", e.getMessage());
+
+			return "../EmployeeOptions.jsp";
+
+		}
+}
 
 	
 
